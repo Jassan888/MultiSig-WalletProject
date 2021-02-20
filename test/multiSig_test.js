@@ -15,10 +15,10 @@ contract('MultiSig',(accounts)=>{
 
     });
 
-    it('should NOT create transfer if sender is not appover', async()=>{
+    it('should NOT create transfer if sender is not approver', async()=>{
         await expectRevert(
-            multiSig.createTransfer(100, accounts[5], {from: accounts[4]});
-            'only appver allowed'
+            multiSig.createTransfer(100, accounts[5], {from: accounts[6]}),
+            'only approver allowed'
         );
     });
 
